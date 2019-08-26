@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
   def index
     @people = Person.search(params[:search])
+    @organisation = Organisation.joins(:people).where(["title LIKE ?", "%#{params[:search]}"])
 
   end
   def new
