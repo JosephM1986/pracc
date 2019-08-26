@@ -8,21 +8,20 @@
     </tr>
 
     <%= form_tag people_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag 'Search', name: nil %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag 'Search', name: nil %>
 
-    <% @people.each do |people| %>
-    <tr>
-        <td><%= people.first_name %></td>
-        <td><%= people.last_name %></td>
-        <td><%= people.organisation.title %></td>
-        <td><%= link_to 'show', person_path(people) %></td>
-        <td><%= link_to 'edit person', edit_person_path(people) %></td>
-        <td><%= link_to 'delete', people, method: :delete, data:{ :confirm => 'Are you sure?' } %></td>
-                <% end %>
-    </tr>
+      <% @people.each do |people| %>
+        <tr>
+            <td><%= people.first_name %></td>
+            <td><%= people.last_name %></td>
+            <td><%= people.organisation.title %></td>
+            <td><%= link_to 'show', person_path(people) %></td>
+            <td><%= link_to 'edit person', edit_person_path(people) %></td>
+            <td><%= link_to 'delete', people, method: :delete, data:{ :confirm => 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
-
 </table>
 <%= link_to  "People Listing", controller: 'people' %>
 <%= link_to  "New Person", new_person_path %>
