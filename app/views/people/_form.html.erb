@@ -26,8 +26,8 @@
 
 
     <p>
-        <%= form.label :organisation_id %><br>
-        <%= form.collection_select :organisation_id, Person.all, :id, :organisation_id %>
+        <%= form.label :title %><br>
+        <%= form.collection_select :organisation, Organisation.all, :id, :title %>
 
 
     </p>
