@@ -1,26 +1,5 @@
-<h1>Edit Person</h1>
+<h1>edit Person</h1>
 
-<%= form_for(@people) do |f| %>
+<%= render 'form' %>
 
-<p>
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-</p>
-<p>
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-</p>
-
-<p>
-  <%= f.label :organisation_id %>
-<%=  f.collection_select :organisation_id, Person.all, :id, :organisation_id %>
-
-
-<p>
-    <%= f.submit %>
-</p>
-<p>
-  <%= link_to  "back", people_path %>
-</p>
-
-<% end %>
+<%= link_to 'Back', people_path %>
