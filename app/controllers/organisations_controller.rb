@@ -1,11 +1,12 @@
 class OrganisationsController < ApplicationController
-  
+
   before_action :set_organisation, only: [:show, :edit, :update, :destroy]
 
   # GET /organisations
   # GET /organisations.json
   def index
     @organisations = Organisation.all
+    @organisations = Person.search(params[:search])
   end
 
   # GET /organisations/1
@@ -74,6 +75,6 @@ class OrganisationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organisation_params
-      params.require(:organisation).permit(:title, :location)
+      params.require(:organisation).permit(:title, :location, :search)
     end
 end

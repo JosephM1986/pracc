@@ -1,6 +1,6 @@
 <h1>Edit Person</h1>
 
-<%= form_with(model: @people, local: true) do |f| %>
+<%= form_for(@people) do |f| %>
 
 <p>
     <%= f.label :first_name %><br>
@@ -10,15 +10,18 @@
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
 </p>
+
 <p>
-    <%= f.label :assessment_count %><br>
-    <%= f.text_field :assessment_count %>
+  <%= f.label :organisation_id %>
+  <%= f.text_area :organisation_id %>
 </p>
 
 
 <p>
     <%= f.submit %>
 </p>
+<p>
+  <%= link_to  "back", people_path %>
+</p>
+
 <% end %>
-
-

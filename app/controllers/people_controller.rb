@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
   def index
     @people = Person.search(params[:search])
+    @organisations = Organisation.search(params[:search])
   end
   def new
     @people = Person.new
@@ -8,9 +9,6 @@ class PeopleController < ApplicationController
   end
   def create
     @people = Person.new(params[:id])
-    @organisations = Organisation.new(params[:id])
-    
-
     if @people.save
       redirect_to @people, notice: 'successfully created'
     else
@@ -47,6 +45,6 @@ end
 
   private
   def people_params
-   params.require(:people).permit(:search, :first_name, :last_name)
-  end 
+   params.require(:person).permit(:first_name, :last_name, :organisation_id,:id)
+  end
 end

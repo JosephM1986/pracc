@@ -8,5 +8,3 @@ class Organisation < ApplicationRecord
         end
     end
 end
-    
-
