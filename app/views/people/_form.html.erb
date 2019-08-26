@@ -1,5 +1,18 @@
 <%= form_for @people do |form| %>
+  <% if @people.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@people.errors.count, 'error') %>
+      Prohibited
+        this person from being saved:
+      </h2>
 
+      <ul>
+        <%= @people.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+      </div>
+      <% end %>
 
     <p>
         <%= form.label :first_name %><br>
@@ -14,7 +27,8 @@
 
     <p>
         <%= form.label :organisation_id %><br>
-        <%= form.text_field :organisation_id %>
+        <%= form.collection_select :organisation_id, Person.all, :id, :organisation_id %>
+
 
     </p>
     <p>

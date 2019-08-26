@@ -9,6 +9,8 @@ class PeopleController < ApplicationController
     #creates an instance variable for Person.new
     @people = Person.new
 
+
+
   end
 
   def create
@@ -27,6 +29,7 @@ class PeopleController < ApplicationController
     @people = Person.find(params[:id])
   end
   def update
+
     #will find the person by id
     #will update the parameters that are permitted in the people_params
     #will redirect back to the instance of @people otherwise will render the edit file

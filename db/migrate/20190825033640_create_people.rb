@@ -3,7 +3,7 @@ class CreatePeople < ActiveRecord::Migration[5.2]
     create_table :people do |t|
       t.string :first_name
       t.string :last_name
-      t.integer :assessment_count
+      t.integer :assessment_count, default: 0
       t.references :organisation, foreign_key: true
 
       t.timestamps
