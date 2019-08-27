@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # root to: 'people#index'
+  root to: 'people#index'
+  match '/people' => 'people#curl__get_example', via: :get
+  match '/people' => 'people#curl__post_example', via: :post
   # namespace :api do
   resources :people
   resources :organisations
