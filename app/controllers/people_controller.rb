@@ -1,14 +1,23 @@
 # frozen_string_literal: true
 
 class PeopleController < ApplicationController
+  # def curl__get_example
+  #   render text: 'Thanks for sending a GET request with cURL!'
+  # end
+  #
+  # def curl__post_example
+  #   render text: 'Thanks for sending a POST request with cURL! Payload: #{request.body.read}'
+  # end
+
   def index
     # refers to the search function in the model
     @people = Person.search(params[:search])
+    #   response = Person.search params[:q]
+    #   render json: response
   end
 
   def new
     # creates an instance variable for Person.new
-
     @people = Person.new
   end
 
@@ -52,7 +61,7 @@ class PeopleController < ApplicationController
     @people = Person.find(params[:id])
     @people.destroy
     redirect_to people_path
-      end
+  end
 
   # these strong parameters are required when actions
   private
