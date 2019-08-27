@@ -66,11 +66,6 @@ class PeopleController < ApplicationController
   # these strong parameters are required when actions
   private
 
-  def foos_params
-    params.require(:person).permit(:first_name, :last_name)
-    ActiveSupport::JSON.decode(foos_params[:foo])
-  end
-
   def people_params
     params.require(:person).permit(:first_name, :last_name)
   end
