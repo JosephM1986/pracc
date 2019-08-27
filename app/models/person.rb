@@ -2,7 +2,7 @@
 
 class Person < ApplicationRecord
   belongs_to :organisation
-  validates :first_name, :last_name, presence: true
+  # validates :first_name, :last_name, presence: true
 
   def self.search(search)
     if search
