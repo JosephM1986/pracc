@@ -1,49 +1,54 @@
 # frozen_string_literal: true
 
-module Api
-  class PeopleController < ApplicationController
-    # before_action :set_people
-    def index
-      # @people = Person.search(params[:search])
-      @people = Person.search(params[:search])
-      render json: @people
-     end
+class Api::PeopleController < ApplicationController
+  # before_action :set_people
+  def index
+    # @people = Person.search(params[:search])
+    @people = Person.search(params[:search])
+    render json: @people.to_json(include: :organisation)
+   end
 
-    def show
-      @people = Person.find(params[:id]).limit(1)
+  def show
+    @people = Person.find(params[:id])
 
-      render json: @people
-    end
+    render json: @people.to_json(include: :organisation)
+  end
 
-    def edit
-      @people = Person.find(params[:id])
-    end
+  def create
+    people = Post.new(people_params)
 
-    def update
-      @people = Person.find(params[:id])
-
-      if @people.update(people_params)
-        redirect_to @people
-
-      else
-        render json: @people
+    if people.save
+      render json: people, status: :created
+    else
+      render json: people.errors, status: :unprocessable_entity
     end
   end
 
-    # def new
-    #   @people = Person.new
-    # end
-    #
-    # def show
-    #   @people = Person.find(params[:id])
-    #  end
-    #
-    # def temporary_people
-    #   @people = Perso.search(params[:search])
-    # end
-
-    def people_params
-      params.require(:person).permit(:first_name, :last_name)
-      end
+  def update
+    if @people.update(people_params)
+      render json: @people
+    else
+      render json: @people.errors, status: :unprocessable_entity
+    end
   end
-end
+
+  def destroy
+    @people.destroy
+  end
+
+  # def new
+  #   @people = Person.new
+  # end
+  #
+  # def show
+  #   @people = Person.find(params[:id])
+  #  end
+  #
+  # def temporary_people
+  #   @people = Perso.search(params[:search])
+  # end
+
+  def people_params
+    params.require(:person).permit(:first_name, :last_name, :organisation_id)
+    end
+  end
