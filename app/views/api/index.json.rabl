@@ -7,6 +7,6 @@ child :organisation do
   attributes :id, :title, :location
 end
 
-# collection @people
-#
-# extends 'api/show'
+collection @people
+
+extends 'api/show'

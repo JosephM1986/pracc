@@ -25,30 +25,33 @@ class Api::PeopleController < ApplicationController
   end
 
   def update
-    if @people.update(people_params)
-      render json: @people
+    if @people.update(update_params)
+      render json: @people, status: :ok
     else
       render json: @people.errors, status: :unprocessable_entity
     end
   end
 
-  def destroy
-    @people.destroy
+  def destroy; end
+
+    # def new
+    #   @people = Person.new
+    # end
+    #
+    # def show
+    #   @people = Person.find(params[:id])
+    #  end
+    #
+    # def temporary_people
+    #   @people = Perso.search(params[:search])
+    # end
+    private
+
+  def update_params
+    params.permit(:first_name, :last_name)
   end
 
-  # def new
-  #   @people = Person.new
-  # end
-  #
-  # def show
-  #   @people = Person.find(params[:id])
-  #  end
-  #
-  # def temporary_people
-  #   @people = Perso.search(params[:search])
-  # end
-
   def people_params
-    params.require(:person).permit(:first_name, :last_name, :organisation_id)
+    params.require(:person).permit(:first_name, :last_name)
     end
   end
