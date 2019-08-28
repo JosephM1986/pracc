@@ -1,0 +1,32 @@
+<p>
+    <strong>First Name:</strong>
+    <%= @people.first_name %>
+</p>
+
+<p>
+    <strong>Last Name:</strong>
+    <%= @people.last_name %>
+</p>
+
+<p>
+    <strong>Assessment Count:</strong>
+    <%= @people.assessment_count %>
+</p>
+    <p>
+        <strong>Organisation ID:</strong>
+        <%= @people.organisation_id %>
+    </p>
+
+    <h2>organisation</h2>
+   
+    <p>
+       <strong>Title:</strong>
+       <%= @people.organisation.title %>
+    </p>
+    <p>
+        <strong>Location:</strong>
+        <%= @people.organisation.location %>
+    </p>
+    
+<%= link_to  "back", people_path %>
+<%= link_to  "edit", edit_person_path(@people) %>

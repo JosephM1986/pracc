@@ -6,3 +6,7 @@ attributes :id, :first_name, :last_name, :assessment_count
 child :organisation do
   attributes :id, :title, :location
 end
+
+collection @people
+
+extends 'api/show'
