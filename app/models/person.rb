@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Person < ApplicationRecord
+  include HTTParty
+
   belongs_to :organisation
   validates :first_name, :last_name, presence: true
 
@@ -12,5 +14,9 @@ class Person < ApplicationRecord
     else
       all
     end
+  end
+
+  def get_people
+    # response = HTTParty.get
   end
 end

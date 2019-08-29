@@ -36,10 +36,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # gem 'active_model_serializers'
+gem 'httparty'
 gem 'oj'
 gem 'rabl'
 gem 'ransack'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
