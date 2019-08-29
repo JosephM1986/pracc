@@ -14,9 +14,9 @@ class Api::PeopleController < ApplicationController
    end
 
   def show
-    # @people = Person.find(params[:id])
-    #
-    # render json: @people.to_json(include: :organisation)
+    @people = Person.find(params[:id])
+
+    render json: @people.to_json(include: :organisation)
   end
 
   def create
